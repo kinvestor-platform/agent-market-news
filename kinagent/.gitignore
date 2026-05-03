@@ -1,0 +1,25 @@
+# Byte-compiled / cached
+__pycache__/
+*.pyc
+*.pyo
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+*.whl
+*.tar.gz
+
+# Environments
+.env
+.env.*
+venv/
+.venv/
+
+# Tooling caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# OS
+.DS_Store

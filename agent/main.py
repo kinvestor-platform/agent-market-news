@@ -76,6 +76,6 @@ if __name__ == "__main__":
     agent = MarketNewsAgent()
     marketplace_url = os.environ.get(
         "MARKETPLACE_URL",
-        "https://marketplace-placeholder-uc.a.run.app",
+        "https://agent-marketplace-384474726293.us-central1.run.app",
     )
     asyncio.run(run_agent(agent, marketplace_url=marketplace_url, port=8000))

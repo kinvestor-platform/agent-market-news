@@ -1,6 +1,9 @@
 FROM python:3.12-slim
 WORKDIR /app
-RUN pip install --no-cache-dir "kinagent @ git+https://github.com/kinvestor-platform/kinagent.git@develop"
+# Copy and install kinagent from local source (avoids git-over-HTTPS in cross-platform builds)
+COPY kinagent/ ./kinagent/
+RUN pip install --no-cache-dir ./kinagent
+# Install agent
 COPY agent/ ./agent/
 COPY agent.manifest.json .
 ENV PYTHONUNBUFFERED=1
