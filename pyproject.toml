@@ -1,0 +1,12 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-market-news"
+version = "0.1.0"
+description = "Market news summarizer agent for Kinvestor platform"
+requires-python = ">=3.12"
+dependencies = [
+    "kinagent>=0.2.0",
+]

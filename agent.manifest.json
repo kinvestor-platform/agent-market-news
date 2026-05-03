@@ -1,0 +1,18 @@
+{
+  "agent_type": "market_news",
+  "display_name": "Market News Summarizer",
+  "version": "0.1.0",
+  "description": "Summarizes recent market news for any stock ticker using web search and Gemini Flash",
+  "compute": {
+    "tier": "cpu",
+    "cpu": "0.5",
+    "memory": "512Mi"
+  },
+  "compute_provider": "platform",
+  "default_config": {
+    "days": 7
+  },
+  "oar": {
+    "enabled": false
+  }
+}

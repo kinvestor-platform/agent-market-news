@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agent-market-news
+  namespace: agents
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agent-market-news
+  template:
+    metadata:
+      labels:
+        app: agent-market-news
+    spec:
+      containers:
+      - name: agent
+        image: us-central1-docker.pkg.dev/PROJECT_ID/kinvestor/market-news:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MARKETPLACE_URL
+          value: "https://MARKETPLACE_CLOUD_RUN_URL"
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: agent-secrets
+              key: gemini-api-key
+        - name: POD_UID
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.uid
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1000m"
+            memory: "1Gi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agent-market-news
+  namespace: agents
+spec:
+  selector:
+    app: agent-market-news
+  ports:
+  - port: 8000
+    targetPort: 8000
+  type: ClusterIP
