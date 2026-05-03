@@ -8,5 +8,5 @@ version = "0.1.0"
 description = "Market news summarizer agent for Kinvestor platform"
 requires-python = ">=3.12"
 dependencies = [
-    "kinagent @ git+https://github.com/kinvestor-platform/kinagent.git@main",
+    "kinagent @ git+https://github.com/kinvestor-platform/kinagent.git@develop",
 ]
