@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "kinagent"
-version = "0.1.1"
+version = "0.1.2"
 description = "SDK and CLI for building agents on the Kinvestor Agent Platform"
 readme = "README.md"
 requires-python = ">=3.12"
